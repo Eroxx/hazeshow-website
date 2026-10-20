@@ -52,9 +52,13 @@ nav a:hover { color: var(--ink); }
 .statement p { font: 300 clamp(20px, 2vw, 27px)/1.45 var(--display); font-stretch: 125%; letter-spacing: -0.015em; color: var(--ink); max-width: 900px; }
 
 /* Rooms: big pictures, little text */
+.rooms-head { padding-top: 100px; padding-bottom: 0; }
+.rooms-head p { color: var(--mute); font-size: 17px; max-width: 640px; margin-top: 16px; }
+
 /* Rooms: two to a row, the name and a sentence above each picture (his note), so all four
    are in view at once rather than a long scroll. */
-.rooms { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 40px; row-gap: 80px; padding-top: 80px; }
+.rooms { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 40px; row-gap: 80px; padding-top: 56px;
+  max-width: calc(var(--wide) + 2 * max(20px, 5vw)); margin: 0 auto; }
 .room { width: 100%; display: flex; flex-direction: column; }
 .room video { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 6px; background: #0b0b0d; margin-top: auto; }
 .room-copy { margin-bottom: 22px; }
