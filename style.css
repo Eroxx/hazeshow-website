@@ -100,7 +100,7 @@ footer a:hover { color: var(--ink); }
 
 @media (max-width: 900px) {
   section { padding-top: 96px; padding-bottom: 96px; }
-  nav a:not(:last-child) { display: none; }
+  nav a:not(:nth-last-child(-n+2)) { display: none; }
   .rooms { gap: 72px; }
   .rooms { grid-template-columns: 1fr; row-gap: 64px; }
   .modes-head { grid-template-columns: 1fr; gap: 14px; }
@@ -132,3 +132,8 @@ footer a:hover { color: var(--ink); }
   background: rgba(255, 255, 255, 0.12); color: #fff; font: 300 28px/1 var(--body); cursor: pointer; }
 .viewer-close:hover, .viewer-close:focus-visible { background: rgba(255, 255, 255, 0.24); }
 @media (max-width: 700px) { .strip .expand { width: 28px; height: 28px; right: 6px; bottom: 6px; } .strip .expand svg { width: 12px; height: 12px; } }
+
+/* Discord: its own mark in its own blurple, everywhere it appears */
+a.discord, footer a.discord { display: inline-flex; align-items: center; gap: 6px; color: #fff; background: #5865F2; padding: 5px 12px; border-radius: 999px; text-decoration: none; font-size: 13px; }
+a.discord:hover, footer a.discord:hover { color: #fff; background: #4752C4; }
+a.discord svg { width: 16px; height: 16px; flex: none; }
