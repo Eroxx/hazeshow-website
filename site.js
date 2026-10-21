@@ -28,3 +28,87 @@
   }, { threshold: 0.35 });
   inline.forEach(function (v) { io.observe(v); });
 })();
+
+// Every picture and video opens larger: tap or click it (or its expand button), and the
+// viewer fills the screen. A video plays there with its controls; Esc, the close button or a
+// tap outside closes it.
+(function () {
+  var box = document.createElement("div");
+  box.className = "viewer"; box.hidden = true;
+  box.setAttribute("role", "dialog"); box.setAttribute("aria-modal", "true");
+  box.innerHTML = '<button class="viewer-close" type="button" aria-label="Close">&times;</button><div class="viewer-stage"></div><p class="viewer-caption"></p>';
+  document.body.appendChild(box);
+  var stage = box.querySelector(".viewer-stage"), caption = box.querySelector(".viewer-caption");
+  var opener = null;
+
+  var src = function (v) {
+    if (v.getAttribute("data-src")) return v.getAttribute("data-src") + ".mp4";
+    if (v.getAttribute("data-inline")) return "video/" + v.getAttribute("data-inline") + ".mp4";
+    return v.currentSrc || v.src;
+  };
+
+  var open = function (el) {
+    opener = el;
+    stage.innerHTML = "";
+    var big;
+    if (el.tagName === "VIDEO") {
+      big = document.createElement("video");
+      big.src = src(el); big.poster = el.poster || "";
+      big.muted = true; big.loop = true; big.controls = true; big.playsInline = true; big.autoplay = true;
+      big.setAttribute("playsinline", "");
+      if (el.currentTime) big.currentTime = el.currentTime;
+      el.pause();
+    } else {
+      big = document.createElement("img");
+      big.src = el.currentSrc || el.src; big.alt = el.alt;
+    }
+    stage.appendChild(big);
+    var fig = el.closest("figure"), room = el.closest(".room");
+    caption.textContent = fig && fig.querySelector("figcaption") ? fig.querySelector("figcaption").textContent
+      : room && room.querySelector("h2") ? room.querySelector("h2").textContent
+      : el.getAttribute("aria-label") || el.alt || "";
+    box.hidden = false;
+    document.documentElement.classList.add("viewing");
+    if (big.tagName === "VIDEO") { var p = big.play(); if (p && p.catch) p.catch(function () {}); }
+    box.querySelector(".viewer-close").focus();
+  };
+
+  var close = function () {
+    if (box.hidden) return;
+    stage.innerHTML = "";
+    box.hidden = true;
+    document.documentElement.classList.remove("viewing");
+    if (opener && opener.tagName === "VIDEO" && opener.hasAttribute("autoplay")) { var p = opener.play(); if (p && p.catch) p.catch(function () {}); }
+    if (opener) { var b = opener.parentNode.querySelector(".expand") || document.querySelector(".hero .expand"); if (b) b.focus(); }
+  };
+
+  box.addEventListener("click", function (e) { if (e.target === box || e.target === stage || e.target.classList.contains("viewer-close")) close(); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
+
+  var button = function (el, label) {
+    var b = document.createElement("button");
+    b.type = "button"; b.className = "expand";
+    b.setAttribute("aria-label", label);
+    b.innerHTML = '<svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M2 6V2h4M10 2h4v4M14 10v4h-4M6 14H2v-4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>';
+    b.addEventListener("click", function (e) { e.stopPropagation(); open(el); });
+    return b;
+  };
+
+  // The hero film sits behind its words: its button opens it, and so does a tap on the picture.
+  var hero = document.querySelector(".hero-video");
+  if (hero) {
+    var hb = button(hero, "Watch the film full size");
+    hb.classList.add("expand-hero");
+    hero.parentNode.appendChild(hb);
+    hero.parentNode.addEventListener("click", function (e) { if (!e.target.closest("a, button")) open(hero); });
+  }
+
+  document.querySelectorAll(".room video, .tv-video, .strip img").forEach(function (el) {
+    var wrap = document.createElement("span");
+    wrap.className = "zoom";
+    el.parentNode.insertBefore(wrap, el);
+    wrap.appendChild(el);
+    wrap.appendChild(button(el, el.tagName === "VIDEO" ? "Watch full size" : "See full size"));
+    el.addEventListener("click", function () { open(el); });
+  });
+})();

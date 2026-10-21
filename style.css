@@ -108,3 +108,27 @@ footer a:hover { color: var(--ink); }
   .cols { grid-template-columns: 1fr; gap: 28px; }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+/* Tap to see it larger */
+.zoom { position: relative; display: block; cursor: zoom-in; }
+.room .zoom { margin-top: auto; }
+.room .zoom video { margin-top: 0; display: block; }
+.strip .zoom img, .tv .zoom video { display: block; }
+.hero { cursor: zoom-in; }
+.hero-shade { pointer-events: none; }
+.expand { position: absolute; right: 10px; bottom: 10px; width: 36px; height: 36px; display: grid; place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.25); border-radius: 50%; background: rgba(0, 0, 0, 0.55); color: #fff;
+  cursor: pointer; opacity: 0.85; transition: opacity 0.2s, background 0.2s; -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
+.expand:hover, .expand:focus-visible { opacity: 1; background: rgba(0, 0, 0, 0.8); }
+.expand-hero { top: 84px; bottom: auto; right: max(20px, 5vw); z-index: 2; }
+.viewing, .viewing body { overflow: hidden; }
+.viewer { position: fixed; inset: 0; z-index: 100; background: #000; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; padding: 56px 16px 24px; cursor: zoom-out; }
+.viewer[hidden] { display: none; }
+.viewer-stage { flex: 1; width: 100%; min-height: 0; display: flex; align-items: center; justify-content: center; }
+.viewer-stage img, .viewer-stage video { max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 6px; cursor: default; background: #000; }
+.viewer-caption { font: 400 11.5px var(--mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--soft); margin: 14px 0 0; text-align: center; }
+.viewer-close { position: absolute; top: 12px; right: 12px; width: 44px; height: 44px; border: 0; border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12); color: #fff; font: 300 28px/1 var(--body); cursor: pointer; }
+.viewer-close:hover, .viewer-close:focus-visible { background: rgba(255, 255, 255, 0.24); }
+@media (max-width: 700px) { .strip .expand { width: 28px; height: 28px; right: 6px; bottom: 6px; } .strip .expand svg { width: 12px; height: 12px; } }
