@@ -22,11 +22,62 @@
       var v = e.target;
       if (e.isIntersecting) {
         if (!v.src) v.src = "video/" + v.getAttribute("data-inline") + ".mp4";
-        v.muted = true; play(v);
+        if (!v.hasAttribute("data-sound")) v.muted = true;
+        play(v);
       } else { v.pause(); }
     });
   }, { threshold: 0.35 });
   inline.forEach(function (v) { io.observe(v); });
+})();
+
+// Sound (a friend's note, 2026-10-22: the films showed the lights but not that Hazeshow hears
+// music). Every film plays to "First Light", the song that comes with Hazeshow, which we own, so
+// it can be heard here. Browsers start videos muted: each has a Sound button. One plays aloud at a
+// time; turning it on starts the film from its first beat.
+var setSoundOff = function () {};
+(function () {
+  var ICON_OFF = '<svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true"><path d="M2 6h3l4-3v10L5 10H2z" fill="currentColor"/><path d="M11 6l4 4M15 6l-4 4" stroke="currentColor" stroke-width="1.5"/></svg>';
+  var ICON_ON = '<svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true"><path d="M2 6h3l4-3v10L5 10H2z" fill="currentColor"/><path d="M11 5.5a3.5 3.5 0 0 1 0 5M12.8 3.6a6 6 0 0 1 0 8.8" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>';
+  var buttons = [];
+  var show = function (b, on) {
+    b.setAttribute("aria-pressed", on ? "true" : "false");
+    b.setAttribute("aria-label", on ? "Turn the sound off" : "Turn the sound on");
+    b.innerHTML = (on ? ICON_ON : ICON_OFF) + "<span>" + (on ? "Sound on" : b.getAttribute("data-label")) + "</span>";
+  };
+  var off = function (v) {
+    v.muted = true; v.removeAttribute("data-sound");
+    buttons.forEach(function (b) { if (b._video === v) show(b, false); });
+  };
+  setSoundOff = off;
+  var on = function (v) {
+    document.querySelectorAll("video[data-sound]").forEach(off);
+    v.setAttribute("data-sound", "");
+    v.muted = false; v.currentTime = 0;
+    var p = v.play(); if (p && p.catch) p.catch(function () {});
+    buttons.forEach(function (b) { if (b._video === v) show(b, true); });
+  };
+  var add = function (v, host, label, extra) {
+    var b = document.createElement("button");
+    b.type = "button"; b.className = "sound" + (extra ? " " + extra : "");
+    b.setAttribute("data-label", label);
+    b._video = v;
+    show(b, false);
+    b.addEventListener("click", function (e) {
+      e.stopPropagation();
+      if (v.hasAttribute("data-sound")) off(v); else on(v);
+    });
+    host.appendChild(b);
+    buttons.push(b);
+  };
+  window.addEventListener("load", function () {
+    var hero = document.querySelector(".hero-video");
+    if (hero) add(hero, hero.parentNode, "Tap for sound", "sound-hero");
+    document.querySelectorAll(".room video, .tv-video").forEach(function (v) {
+      add(v, v.closest(".zoom") || v.parentNode, "Sound");
+      // Scrolled away (paused): its sound goes too.
+      v.addEventListener("pause", function () { if (v.hasAttribute("data-sound") && !document.documentElement.classList.contains("viewing")) off(v); });
+    });
+  });
 })();
 
 // Every picture and video opens larger: tap or click it (or its expand button), and the
@@ -54,10 +105,11 @@
     if (el.tagName === "VIDEO") {
       big = document.createElement("video");
       big.src = src(el); big.poster = el.poster || "";
-      big.muted = true; big.loop = true; big.controls = true; big.playsInline = true; big.autoplay = true;
+      big.muted = !el.hasAttribute("data-sound"); big.loop = true; big.controls = true; big.playsInline = true; big.autoplay = true;
       big.setAttribute("playsinline", "");
       if (el.currentTime) big.currentTime = el.currentTime;
       el.pause();
+      if (el.hasAttribute("data-sound")) setSoundOff(el);
     } else {
       big = document.createElement("img");
       big.src = el.currentSrc || el.src; big.alt = el.alt;
