@@ -159,3 +159,14 @@ footer a:hover { color: var(--ink); }
 a.discord, footer a.discord { display: inline-flex; align-items: center; gap: 6px; color: #fff; background: #5865F2; padding: 5px 12px; border-radius: 999px; text-decoration: none; font-size: 13px; }
 a.discord:hover, footer a.discord:hover { color: #fff; background: #4752C4; }
 a.discord svg { width: 16px; height: 16px; flex: none; }
+
+/* Phones: the hero film plays uncovered across the top, with the words under it. Over the film,
+   four paragraphs hid it until it read as a dark background (his note, 2026-10-22). */
+@media (max-width: 700px) {
+  .hero { display: block; min-height: 0; padding-top: 64px; }
+  .hero > .hero-video { position: relative; inset: auto; height: auto; aspect-ratio: 16 / 9; display: block; }
+  .hero-shade { display: none; }
+  .hero-copy { padding: 24px max(20px, 5vw) 48px; }
+  .hero .lede { text-shadow: none; }
+  .expand-hero { top: 72px; right: 10px; }
+}
