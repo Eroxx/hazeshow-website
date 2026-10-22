@@ -5,9 +5,11 @@
   var still = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var play = function (v) { var p = v.play(); if (p && p.catch) p.catch(function () {}); };
 
+  // Phones get the lighter home page film (the full-screen one is ~20 MB).
+  var small = window.innerWidth < 900;
   document.querySelectorAll("video[data-src]").forEach(function (v) {
     v.muted = true;
-    v.src = v.getAttribute("data-src") + ".mp4";
+    v.src = v.getAttribute("data-src") + (small && v.classList.contains("hero-video") ? "-sm" : "") + ".mp4";
     if (still) { v.removeAttribute("autoplay"); v.controls = true; return; }
     play(v);
   });
@@ -42,7 +44,7 @@ var setSoundOff = function () {};
   var show = function (b, on) {
     b.setAttribute("aria-pressed", on ? "true" : "false");
     b.setAttribute("aria-label", on ? "Turn the sound off" : "Turn the sound on");
-    b.innerHTML = (on ? ICON_ON : ICON_OFF) + "<span>" + (on ? "Sound on" : b.getAttribute("data-label")) + "</span>";
+    b.innerHTML = (on ? ICON_ON : ICON_OFF) + "<span>" + (on ? b.getAttribute("data-on") : b.getAttribute("data-label")) + "</span>";
   };
   var off = function (v) {
     v.muted = true; v.removeAttribute("data-sound");
@@ -56,10 +58,10 @@ var setSoundOff = function () {};
     var p = v.play(); if (p && p.catch) p.catch(function () {});
     buttons.forEach(function (b) { if (b._video === v) show(b, true); });
   };
-  var add = function (v, host, label, extra) {
+  var add = function (v, host, label, onLabel, extra) {
     var b = document.createElement("button");
     b.type = "button"; b.className = "sound" + (extra ? " " + extra : "");
-    b.setAttribute("data-label", label);
+    b.setAttribute("data-label", label); b.setAttribute("data-on", onLabel);
     b._video = v;
     show(b, false);
     b.addEventListener("click", function (e) {
@@ -70,10 +72,13 @@ var setSoundOff = function () {};
     buttons.push(b);
   };
   window.addEventListener("load", function () {
-    var hero = document.querySelector(".hero-video");
-    if (hero) add(hero, hero.parentNode, "Tap for sound", "sound-hero");
-    document.querySelectorAll(".room video, .tv-video").forEach(function (v) {
-      add(v, v.closest(".zoom") || v.parentNode, "Sound");
+    // The hero's button sits with the words, under the line about First Light: the first thing
+    // to press (his note, 2026-10-22: more prominent).
+    var hero = document.querySelector(".hero-video"), note = document.querySelector(".sound-note");
+    if (hero) add(hero, note ? note.parentNode : hero.parentNode, "Turn on the sound", "Sound on", "sound-hero");
+    if (hero && note) note.parentNode.insertBefore(note.parentNode.lastChild, note.nextSibling);
+    document.querySelectorAll(".room video, .tv-video, .strip video").forEach(function (v) {
+      add(v, v.closest(".zoom") || v.parentNode, "Sound", "Sound on");
       // Scrolled away (paused): its sound goes too.
       v.addEventListener("pause", function () { if (v.hasAttribute("data-sound") && !document.documentElement.classList.contains("viewing")) off(v); });
     });
@@ -93,7 +98,7 @@ var setSoundOff = function () {};
   var opener = null;
 
   var src = function (v) {
-    if (v.getAttribute("data-src")) return v.getAttribute("data-src") + ".mp4";
+    if (v.getAttribute("data-src")) return v.currentSrc || v.getAttribute("data-src") + ".mp4";
     if (v.getAttribute("data-inline")) return "video/" + v.getAttribute("data-inline") + ".mp4";
     return v.currentSrc || v.src;
   };
@@ -155,7 +160,7 @@ var setSoundOff = function () {};
     hero.parentNode.addEventListener("click", function (e) { if (!e.target.closest("a, button")) open(hero); });
   }
 
-  document.querySelectorAll(".room video, .tv-video, .strip img").forEach(function (el) {
+  document.querySelectorAll(".room video, .tv-video, .strip video, .strip img").forEach(function (el) {
     var wrap = document.createElement("span");
     wrap.className = "zoom";
     el.parentNode.insertBefore(wrap, el);

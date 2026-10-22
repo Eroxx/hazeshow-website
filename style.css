@@ -73,7 +73,7 @@ nav a:hover { color: var(--ink); }
 .modes-head p { color: var(--mute); font-size: 17px; max-width: 460px; }
 .strip { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
 .strip figure { margin: 0; }
-.strip img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 5px; }
+.strip img, .strip video { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 5px; background: #0b0b0d; display: block; }
 .strip figcaption { font: 400 11px var(--mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--soft); margin-top: 12px; }
 
 /* Apple TV */
@@ -121,8 +121,15 @@ footer a:hover { color: var(--ink); }
   -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); transition: background 0.2s, color 0.2s; }
 .sound:hover, .sound:focus-visible { background: rgba(0, 0, 0, 0.82); }
 .sound[aria-pressed="true"] { background: #fff; color: #000; }
-.sound-hero { top: 84px; bottom: auto; left: auto; right: calc(max(20px, 5vw) + 48px); }
-@media (max-width: 700px) { .sound { height: 32px; font-size: 12px; } }
+/* The home page film's: a big white button with the words, the first thing to press (his note,
+   2026-10-22: the corner chip on the full-screen film was easy to miss); dark once it's on. */
+.sound-hero { position: relative; left: auto; bottom: auto; margin-top: 22px; height: 50px; padding: 0 22px 0 18px; border-radius: 25px;
+  background: #fff; color: #000; font-size: 16px; font-weight: 650; box-shadow: 0 4px 18px rgba(0, 0, 0, 0.45); transition: transform 0.15s, background 0.2s, color 0.2s; }
+.sound-hero svg { width: 20px; height: 20px; }
+.sound-hero:hover, .sound-hero:focus-visible { background: #fff; transform: scale(1.04); }
+.sound-hero[aria-pressed="true"] { background: rgba(255, 255, 255, 0.14); color: #fff; box-shadow: none; }
+.strip .sound { height: 30px; padding: 0 11px 0 9px; font-size: 12px; left: 8px; bottom: 8px; }
+@media (max-width: 700px) { .sound { height: 32px; font-size: 12px; } .sound-hero { height: 46px; font-size: 15px; } }
 .room .zoom { margin-top: auto; }
 .room .zoom video { margin-top: 0; display: block; }
 .strip .zoom img, .tv .zoom video { display: block; }
