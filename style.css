@@ -76,6 +76,13 @@ nav a:hover { color: var(--ink); }
 .modes-head p { color: var(--mute); font-size: 17px; max-width: 460px; }
 .strip { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
 .strip figure { margin: 0; }
+/* A stage that spans the row: the venues (one clip each), and the last stage. */
+.room-wide { grid-column: 1 / -1; }
+.room-wide .room-copy p { max-width: 640px; }
+.strip.venues { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 14px; margin-top: auto; }
+@media (max-width: 1000px) { .strip.venues { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 700px) { .strip.venues { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .strip.venues figure:last-child { grid-column: 1 / -1; } }   /* the Dome gets the full width */
 .strip img, .strip video { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 5px; background: #0b0b0d; display: block; }
 .strip figcaption { font: 400 11px var(--mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--soft); margin-top: 12px; }
 
