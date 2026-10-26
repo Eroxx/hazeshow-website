@@ -168,4 +168,8 @@ var setSoundOff = function () {};
     wrap.appendChild(button(el, el.tagName === "VIDEO" ? "Watch full size" : "See full size"));
     el.addEventListener("click", function () { open(el); });
   });
+  // The montage's stills open the same way, by a click (no button on each moving tile).
+  document.querySelectorAll(".reel img").forEach(function (el) {
+    el.addEventListener("click", function () { open(el); });
+  });
 })();

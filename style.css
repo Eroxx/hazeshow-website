@@ -123,6 +123,29 @@ footer a:hover { color: var(--ink); }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
+/* The montage (2026-10-26): two rows of stills drifting in opposite directions, endlessly, so the
+   range of looks reads at a glance. Plain pictures, as everywhere on the page; the rows fade into the
+   black at both ends. Each row holds its pictures twice and slides by half its width, so the loop
+   has no seam. Hovering pauses a row; with reduced motion the rows stand still and scroll by hand. */
+.montage { padding-left: 0; padding-right: 0; overflow: hidden; }
+.montage .modes-head { padding: 0 max(20px, 5vw); }
+.montage > .reels { max-width: none; display: grid; gap: 18px;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+          mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent); }
+.reel { display: flex; gap: 18px; width: max-content; animation: reel 140s linear infinite; }
+.reel.back { animation-direction: reverse; animation-duration: 160s; }
+.reel:hover { animation-play-state: paused; }
+.reel figure { margin: 0; flex: none; width: clamp(230px, 24vw, 400px); }
+.reel img { cursor: zoom-in; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 5px; background: #0b0b0d; display: block; }
+.reel figcaption { font: 400 11px var(--mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--mute); margin-top: 10px; }
+@keyframes reel { from { transform: translateX(0); } to { transform: translateX(calc(-50% - 9px)); } }
+@media (prefers-reduced-motion: reduce) {
+  .reel { animation: none; }
+  .montage > .reels { overflow-x: auto; -webkit-mask-image: none; mask-image: none; padding: 0 max(20px, 5vw); }
+  .reel figure[aria-hidden] { display: none; }
+}
+
+
 /* Tap to see it larger */
 .zoom { position: relative; display: block; cursor: zoom-in; }
 /* Sound: each film plays to First Light; one aloud at a time. White when on. */
