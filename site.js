@@ -160,7 +160,7 @@ var setSoundOff = function () {};
     hero.parentNode.addEventListener("click", function (e) { if (!e.target.closest("a, button")) open(hero); });
   }
 
-  document.querySelectorAll(".room video, .tv-video, .strip video, .strip img").forEach(function (el) {
+  document.querySelectorAll(".room video, .tv-video, .strip video, .strip img, .wall video").forEach(function (el) {
     var wrap = document.createElement("span");
     wrap.className = "zoom";
     el.parentNode.insertBefore(wrap, el);

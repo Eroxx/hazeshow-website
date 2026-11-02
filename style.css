@@ -97,7 +97,7 @@ nav a:hover { color: var(--ink); }
 .strip figcaption { font: 400 11px var(--mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--soft); margin-top: 12px; }
 
 /* Apple TV */
-.tv { text-align: center; }
+.tv, .replay { text-align: center; }
 .tv-lede { color: var(--mute); font-size: 17px; max-width: 560px; margin: 16px auto 48px; }
 .tv-video { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 6px; }
 .cols { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px; text-align: left; margin-top: 64px; }
@@ -210,3 +210,19 @@ a.discord svg { width: 16px; height: 16px; flex: none; }
   .hero .lede { text-shadow: none; }
   .expand-hero { top: 72px; right: 10px; }
 }
+.replay-lede { margin-bottom: 0; }
+
+/* 2026-11-02: the venues, then the genre stages and visuals as stills with a line each (25 shows
+   was too many films for one page). */
+.venues-section { padding-bottom: 0; }
+.strip figcaption b { display: block; font: 500 15.5px/1.4 var(--body); color: var(--ink); margin-bottom: 4px; }
+.strip.venues figcaption, .strip.cards figcaption { font: 400 14.5px/1.45 var(--body); letter-spacing: 0; text-transform: none; color: var(--mute); }
+/* Four to a row, the last row centred (seven stages and thirteen visuals don't fill a grid). */
+.strip.cards { display: flex; flex-wrap: wrap; justify-content: center; gap: 32px 20px; }
+.strip.cards figure { flex: 0 0 calc((100% - 60px) / 4); min-width: 0; }
+.strip.cards img { height: auto; }
+@media (max-width: 1000px) { .strip.cards figure { flex-basis: calc((100% - 20px) / 2); } }
+@media (max-width: 520px) { .strip.cards figure { flex-basis: 100%; } }
+.stages .strip.cards, .modes .strip.cards { margin-top: 48px; }
+.montage > .wall { margin: 0 auto 56px; padding: 0 max(20px, 5vw); max-width: calc(var(--wide) + 2 * max(20px, 5vw)); box-sizing: border-box; }
+.wall video { width: 100%; aspect-ratio: 16 / 9; display: block; border-radius: 6px; background: #0b0b0d; cursor: zoom-in; }
