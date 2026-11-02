@@ -5,31 +5,55 @@
   var still = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var play = function (v) { var p = v.play(); if (p && p.catch) p.catch(function () {}); };
 
-  // Phones get the lighter home page film (the full-screen one is ~20 MB).
-  var small = window.innerWidth < 900;
-  document.querySelectorAll("video[data-src]").forEach(function (v) {
-    v.muted = true;
-    v.src = v.getAttribute("data-src") + (small && v.classList.contains("hero-video") ? "-sm" : "") + ".mp4";
-    if (still) { v.removeAttribute("autoplay"); v.controls = true; return; }
-    play(v);
-  });
+  // Small screens get the lighter home page film. On Data Saver or a very slow connection nothing plays
+  // by itself: the poster stays, with controls. The film starts after the page has loaded, so its
+  // bytes never compete with the first paint.
+  var net = navigator.connection || {};
+  var saver = net.saveData || /(^|-)2g$/.test(net.effectiveType || "");
+  var small = window.innerWidth < 900 || window.innerWidth * (window.devicePixelRatio || 1) <= 1400;
+  // Each film also comes in HEVC and AV1, about a third smaller; the H.264 original plays anywhere.
+  // (Not the small hero: already squeezed so hard that the new formats save almost nothing.)
+  var probe = document.createElement("video");
+  var kind = probe.canPlayType('video/mp4; codecs="hvc1.1.6.L120.90"') ? ".hevc" : probe.canPlayType('video/mp4; codecs="av01.0.08M.08"') ? ".av1" : "";
+  var film = function (name) { return name + kind + ".mp4"; };
+  var startHero = function () {
+    document.querySelectorAll("video[data-src]").forEach(function (v) {
+      v.muted = true;
+      v.src = small ? v.getAttribute("data-src") + "-sm.mp4" : film(v.getAttribute("data-src"));
+      if (still || saver) { v.removeAttribute("autoplay"); v.controls = true; return; }
+      play(v);
+    });
+  };
+  if (document.readyState === "complete") startHero(); else window.addEventListener("load", startHero);
 
+  // Everything below the first screen waits: a poster loads as its video comes near, the video
+  // itself only once it is on screen.
   var inline = document.querySelectorAll("video[data-inline]");
-  if (still || !("IntersectionObserver" in window)) {
-    inline.forEach(function (v) { v.src = "video/" + v.getAttribute("data-inline") + ".mp4"; v.controls = still; });
-    return;
-  }
+  var poster = function (v) { var p = v.getAttribute("data-poster"); if (p) { v.poster = p; v.removeAttribute("data-poster"); } };
+  var load = function (v) { if (!v.src) v.src = film("video/" + v.getAttribute("data-inline")); };
+  if (!("IntersectionObserver" in window)) { inline.forEach(function (v) { poster(v); load(v); v.controls = true; }); return; }
+  var near = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) { poster(e.target); near.unobserve(e.target); } });
+  }, { rootMargin: "800px 0px" });
+  inline.forEach(function (v) { near.observe(v); });
+  if (still || saver) { inline.forEach(function (v) { v.controls = true; load(v); }); return; }
   var io = new IntersectionObserver(function (entries) {
     entries.forEach(function (e) {
       var v = e.target;
       if (e.isIntersecting) {
-        if (!v.src) v.src = "video/" + v.getAttribute("data-inline") + ".mp4";
+        load(v);
         if (!v.hasAttribute("data-sound")) v.muted = true;
         play(v);
       } else { v.pause(); }
     });
   }, { threshold: 0.35 });
   inline.forEach(function (v) { io.observe(v); });
+
+  // The moving rows of stills rest while they're off screen.
+  var reels = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { e.target.classList.toggle("resting", !e.isIntersecting); });
+  });
+  document.querySelectorAll(".reels").forEach(function (r) { reels.observe(r); });
 })();
 
 // Sound (a friend's note, 2026-10-22: the films showed the lights but not that Hazeshow hears
@@ -43,7 +67,7 @@ var setSoundOff = function () {};
   var buttons = [];
   var show = function (b, on) {
     b.setAttribute("aria-pressed", on ? "true" : "false");
-    b.setAttribute("aria-label", on ? "Turn the sound off" : "Turn the sound on");
+    b.setAttribute("aria-label", on ? b.getAttribute("data-on") + ", turn it off" : "Turn on the sound");
     b.innerHTML = (on ? ICON_ON : ICON_OFF) + "<span>" + (on ? b.getAttribute("data-on") : b.getAttribute("data-label")) + "</span>";
   };
   var off = function (v) {
@@ -58,25 +82,26 @@ var setSoundOff = function () {};
     var p = v.play(); if (p && p.catch) p.catch(function () {});
     buttons.forEach(function (b) { if (b._video === v) show(b, true); });
   };
-  var add = function (v, host, label, onLabel, extra) {
-    var b = document.createElement("button");
-    b.type = "button"; b.className = "sound" + (extra ? " " + extra : "");
-    b.setAttribute("data-label", label); b.setAttribute("data-on", onLabel);
+  var wire = function (v, b) {
     b._video = v;
     show(b, false);
     b.addEventListener("click", function (e) {
       e.stopPropagation();
       if (v.hasAttribute("data-sound")) off(v); else on(v);
     });
-    host.appendChild(b);
     buttons.push(b);
   };
+  var add = function (v, host, label, onLabel) {
+    var b = document.createElement("button");
+    b.type = "button"; b.className = "sound";
+    b.setAttribute("data-label", label); b.setAttribute("data-on", onLabel);
+    host.appendChild(b);
+    wire(v, b);
+  };
+  // The hero's button is in the page itself, with the words, so nothing shifts when it wakes up.
+  var hero = document.querySelector(".hero-video"), heroButton = document.querySelector(".sound-hero");
+  if (hero && heroButton) wire(hero, heroButton);
   window.addEventListener("load", function () {
-    // The hero's button sits with the words, under the line about First Light: the first thing
-    // to press (his note, 2026-10-22: more prominent).
-    var hero = document.querySelector(".hero-video"), note = document.querySelector(".sound-note");
-    if (hero) add(hero, note ? note.parentNode : hero.parentNode, "Turn on the sound", "Sound on", "sound-hero");
-    if (hero && note) note.parentNode.insertBefore(note.parentNode.lastChild, note.nextSibling);
     document.querySelectorAll(".room video, .tv-video, .strip video").forEach(function (v) {
       add(v, v.closest(".zoom") || v.parentNode, "Sound", "Sound on");
       // Scrolled away (paused): its sound goes too.
@@ -99,7 +124,7 @@ var setSoundOff = function () {};
 
   var src = function (v) {
     if (v.getAttribute("data-src")) return v.currentSrc || v.getAttribute("data-src") + ".mp4";
-    if (v.getAttribute("data-inline")) return "video/" + v.getAttribute("data-inline") + ".mp4";
+    if (v.getAttribute("data-inline")) return v.currentSrc || "video/" + v.getAttribute("data-inline") + ".mp4";
     return v.currentSrc || v.src;
   };
 
@@ -109,7 +134,7 @@ var setSoundOff = function () {};
     var big;
     if (el.tagName === "VIDEO") {
       big = document.createElement("video");
-      big.src = src(el); big.poster = el.poster || "";
+      big.src = src(el); big.poster = el.poster || el.getAttribute("data-poster") || "";
       big.muted = !el.hasAttribute("data-sound"); big.loop = true; big.controls = true; big.playsInline = true; big.autoplay = true;
       big.setAttribute("playsinline", "");
       if (el.currentTime) big.currentTime = el.currentTime;
@@ -117,7 +142,7 @@ var setSoundOff = function () {};
       if (el.hasAttribute("data-sound")) setSoundOff(el);
     } else {
       big = document.createElement("img");
-      big.src = el.currentSrc || el.src; big.alt = el.alt;
+      big.src = el.getAttribute("data-full") || el.currentSrc || el.src; big.alt = el.alt;
     }
     stage.appendChild(big);
     var fig = el.closest("figure"), room = el.closest(".room");

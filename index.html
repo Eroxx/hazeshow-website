@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Hazeshow · A live light show for your music</title>
-<meta name="description" content="Hazeshow listens to your music and lights a show for it, live: 25 shows, from a small theater to a stadium with fireworks, a jazz club, a concert hall and a club, to paintings, galaxies and drone shows that grow with the song. On your iPhone, iPad, Mac and Apple TV.">
+<meta name="description" content="Hazeshow listens to your music and lights a show for it, live: 25 stages, from a small theater to a stadium with fireworks, a jazz club, a concert hall and a club, to paintings, galaxies and drone shows, and every song gets its own show. On your iPhone, iPad, Mac and Apple TV.">
 <meta property="og:title" content="Hazeshow">
 <meta property="og:description" content="A live light show for your music. On your iPhone, iPad, Mac and Apple TV.">
 <meta property="og:url" content="https://hazeshow.com/">
@@ -18,8 +18,10 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100,400;100,500;125,300;125,500&family=Martian+Mono:wght@400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=2026110201">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100,400;100,500;125,300;125,500&family=Martian+Mono:wght@400&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100,400;100,500;125,300;125,500&family=Martian+Mono:wght@400&display=swap"></noscript>
+<link rel="preload" as="image" href="img/hero-poster.webp" fetchpriority="high">
+<link rel="stylesheet" href="style.css?v=2026110203">
 <style>[hidden]{display:none!important}.store-badge{display:inline-block;line-height:0;margin:11px 0}.store-badge img{height:44px;width:auto}</style>
 </head>
 <body>
@@ -32,86 +34,88 @@
   </nav>
 </header>
 
+<main>
 <section class="hero">
   <video class="hero-video" data-src="video/hero" autoplay muted loop playsinline preload="metadata" poster="img/hero-poster.webp" aria-label="Hazeshow lighting different stages to music"></video>
   <div class="hero-shade"></div>
   <div class="hero-copy">
     <div class="label"><i>Hazeshow</i></div>
     <h1>A live light show for <b>your music.</b></h1>
-    <p class="lede">Play anything (Spotify, Apple Music, a video, even a record) and Hazeshow turns it into a concert you can watch, lit with the music the way a real lighting designer would. 25 shows, from a small theater to a stadium with fireworks to a drone show over a lake, and more on the way.</p>
+    <p class="lede">Play anything (Spotify, Apple Music, a video, even a record) and Hazeshow turns it into a concert you can watch, lit with the music the way a real lighting designer would. 25 stages, from a small theater to a stadium with fireworks to a drone show over a lake, and a new light show for every song you play.</p>
     <ul class="facts">
-      <li><em>25 shows, more on the way</em><span>·</span><em>See and hear it on iPhone, iPad, Mac or Apple TV</em></li>
+      <li><em>25 stages, more on the way</em><span>·</span><em>See and hear it on iPhone, iPad, Mac or Apple TV</em></li>
       <li><em>Free to try</em><span>·</span><em>$4.99 once, no subscription</em></li>
     </ul>
     <p class="sound-note">Music in these videos: <i>First Light</i>, which comes with Hazeshow.</p>
+    <button type="button" class="sound sound-hero" data-label="Turn on the sound" data-on="Sound on" aria-pressed="false"><span>Turn on the sound</span></button>
     <a class="store-badge" data-store-live hidden href="#" aria-label="Download Hazeshow on the App Store"><img src="img/app-store-badge-white.svg" alt="Download on the App Store" width="132" height="44"></a>
     <p class="meta" data-store-soon>Coming to the App Store</p>
   </div>
 </section>
 
-<section id="looks" class="montage" aria-label="All 25 shows">
+<section id="looks" class="montage" aria-label="All 25 stages">
   <div class="modes-head">
-    <div><div class="label">25 shows, more on the way</div>
-    <h2>A show for every kind of song.</h2></div>
-    <p>Twelve concert stages and thirteen visuals. Hazeshow picks the one that suits each song, or you choose, or let it shuffle to a new one every song. Each song gets its own colours, shapes and moves, so no two look alike, and new shows arrive with updates.</p>
+    <div><div class="label">25 stages, more on the way</div>
+    <h2>25 stages. Endless light shows.</h2></div>
+    <p>Twelve for concerts and thirteen visual worlds. Hazeshow picks the stage that suits each song, or you choose, or let it shuffle. Then the song itself runs the show, with its own colours, shapes and moves, so no two songs look alike. New stages arrive with updates.</p>
   </div>
-  <figure class="wall"><video data-inline="wall" muted loop playsinline preload="none" poster="img/poster-wall.webp" aria-label="All 25 shows playing at once, each in its own tile with its name"></video></figure>
+  <figure class="wall"><video data-inline="wall" muted loop playsinline preload="none" data-poster="img/poster-wall.webp" aria-label="All 25 stages playing at once, each in its own tile with its name"></video></figure>
   <div class="reels">
     <div class="reel">
-      <figure><img src="img/montage/edm30.webp" alt="EDM stage: one of its looks" width="1280" height="720" decoding="async"><figcaption>EDM stage</figcaption></figure>
-      <figure><img src="img/montage/terrain60.webp" alt="Terrain: one of its looks" width="1280" height="720" decoding="async"><figcaption>Terrain</figcaption></figure>
-      <figure><img src="img/montage/metal55.webp" alt="Metal stage: one of its looks" width="1280" height="720" decoding="async"><figcaption>Metal stage</figcaption></figure>
-      <figure><img src="img/montage/liquid50.webp" alt="Liquid light: one of its looks" width="1280" height="720" decoding="async"><figcaption>Liquid light</figcaption></figure>
-      <figure><img src="img/montage/dome50.webp" alt="The Dome: one of its looks" width="1280" height="720" decoding="async"><figcaption>The Dome</figcaption></figure>
-      <figure><img src="img/montage/aurora.webp" alt="Aurora: one of its looks" width="1280" height="720" decoding="async"><figcaption>Aurora</figcaption></figure>
-      <figure><img src="img/montage/club60.webp" alt="The club: one of its looks" width="1280" height="720" decoding="async"><figcaption>The club</figcaption></figure>
-      <figure><img src="img/montage/ink70.webp" alt="Ink: one of its looks" width="1280" height="720" decoding="async"><figcaption>Ink</figcaption></figure>
-      <figure><img src="img/montage/arena40.webp" alt="Arena: one of its looks" width="1280" height="720" decoding="async"><figcaption>Arena</figcaption></figure>
-      <figure><img src="img/montage/kaleidoscope50.webp" alt="Kaleidoscope: one of its looks" width="1280" height="720" decoding="async"><figcaption>Kaleidoscope</figcaption></figure>
-      <figure><img src="img/montage/acoustic60.webp" alt="Acoustic stage: one of its looks" width="1280" height="720" decoding="async"><figcaption>Acoustic stage</figcaption></figure>
-      <figure><img src="img/montage/fountains60.webp" alt="Fountain show: one of its looks" width="1280" height="720" decoding="async"><figcaption>Fountain show</figcaption></figure>
-      <figure><img src="img/montage/wormhole.webp" alt="Wormhole: one of its looks" width="1280" height="720" decoding="async"><figcaption>Wormhole</figcaption></figure>
-      <figure><img src="img/montage/jazz30.webp" alt="Jazz club: one of its looks" width="1280" height="720" decoding="async"><figcaption>Jazz club</figcaption></figure>
-      <figure aria-hidden="true"><img src="img/montage/edm30.webp" alt="" width="1280" height="720" decoding="async"><figcaption>EDM stage</figcaption></figure>
-      <figure aria-hidden="true"><img src="img/montage/terrain60.webp" alt="" width="1280" height="720" decoding="async"><figcaption>Terrain</figcaption></figure>
-      <figure aria-hidden="true"><img src="img/montage/metal55.webp" alt="" width="1280" height="720" decoding="async"><figcaption>Metal stage</figcaption></figure>
-      <figure aria-hidden="true"><img src="img/montage/liquid50.webp" alt="" width="1280" height="720" decoding="async"><figcaption>Liquid light</figcaption></figure>
-      <figure aria-hidden="true"><img src="img/montage/dome50.webp" alt="" width="1280" height="720" decoding="async"><figcaption>The Dome</figcaption></figure>
-      <figure aria-hidden="true"><img src="img/montage/aurora.webp" alt="" width="1280" height="720" decoding="async"><figcaption>Aurora</figcaption></figure>
-      <figure aria-hidden="true"><img src="img/montage/club60.webp" alt="" width="1280" height="720" decoding="async"><figcaption>The club</figcaption></figure>
-      <figure aria-hidden="true"><img src="img/montage/ink70.webp" alt="" width="1280" height="720" decoding="async"><figcaption>Ink</figcaption></figure>
-      <figure aria-hidden="true"><img src="img/montage/arena40.webp" alt="" width="1280" height="720" decoding="async"><figcaption>Arena</figcaption></figure>
-      <figure aria-hidden="true"><img src="img/montage/kaleidoscope50.webp" alt="" width="1280" height="720" decoding="async"><figcaption>Kaleidoscope</figcaption></figure>
-      <figure aria-hidden="true"><img src="img/montage/acoustic60.webp" alt="" width="1280" height="720" decoding="async"><figcaption>Acoustic stage</figcaption></figure>
-      <figure aria-hidden="true"><img src="img/montage/fountains60.webp" alt="" width="1280" height="720" decoding="async"><figcaption>Fountain show</figcaption></figure>
-      <figure aria-hidden="true"><img src="img/montage/wormhole.webp" alt="" width="1280" height="720" decoding="async"><figcaption>Wormhole</figcaption></figure>
-      <figure aria-hidden="true"><img src="img/montage/jazz30.webp" alt="" width="1280" height="720" decoding="async"><figcaption>Jazz club</figcaption></figure>
+      <figure><img src="img/small/edm30-800.webp" srcset="img/small/edm30-480.webp 480w, img/small/edm30-800.webp 800w" sizes="clamp(230px, 24vw, 400px)" data-full="img/montage/edm30.webp" alt="EDM stage: one of its looks" width="1280" height="720" loading="lazy" decoding="async"><figcaption>EDM stage</figcaption></figure>
+      <figure><img src="img/small/terrain60-800.webp" srcset="img/small/terrain60-480.webp 480w, img/small/terrain60-800.webp 800w" sizes="clamp(230px, 24vw, 400px)" data-full="img/montage/terrain60.webp" alt="Terrain: one of its looks" width="1280" height="720" loading="lazy" decoding="async"><figcaption>Terrain</figcaption></figure>
+      <figure><img src="img/small/metal55-800.webp" srcset="img/small/metal55-480.webp 480w, img/small/metal55-800.webp 800w" sizes="clamp(230px, 24vw, 400px)" data-full="img/montage/metal55.webp" alt="Metal stage: one of its looks" width="1280" height="720" loading="lazy" decoding="async"><figcaption>Metal stage</figcaption></figure>
+      <figure><img src="img/small/liquid50-800.webp" srcset="img/small/liquid50-480.webp 480w, img/small/liquid50-800.webp 800w" sizes="clamp(230px, 24vw, 400px)" data-full="img/montage/liquid50.webp" alt="Liquid light: one of its looks" width="1280" height="720" loading="lazy" decoding="async"><figcaption>Liquid light</figcaption></figure>
+      <figure><img src="img/small/dome50-800.webp" srcset="img/small/dome50-480.webp 480w, img/small/dome50-800.webp 800w" sizes="clamp(230px, 24vw, 400px)" data-full="img/montage/dome50.webp" alt="The Dome: one of its looks" width="1280" height="720" loading="lazy" decoding="async"><figcaption>The Dome</figcaption></figure>
+      <figure><img src="img/small/aurora-800.webp" srcset="img/small/aurora-480.webp 480w, img/small/aurora-800.webp 800w" sizes="clamp(230px, 24vw, 400px)" data-full="img/montage/aurora.webp" alt="Aurora: one of its looks" width="1280" height="720" loading="lazy" decoding="async"><figcaption>Aurora</figcaption></figure>
+      <figure><img src="img/small/club60-800.webp" srcset="img/small/club60-480.webp 480w, img/small/club60-800.webp 800w" sizes="clamp(230px, 24vw, 400px)" data-full="img/montage/club60.webp" alt="The club: one of its looks" width="1280" height="720" loading="lazy" decoding="async"><figcaption>The club</figcaption></figure>
+      <figure><img src="img/small/ink70-800.webp" srcset="img/small/ink70-480.webp 480w, img/small/ink70-800.webp 800w" sizes="clamp(230px, 24vw, 400px)" data-full="img/montage/ink70.webp" alt="Ink: one of its looks" width="1280" height="720" loading="lazy" decoding="async"><figcaption>Ink</figcaption></figure>
+      <figure><img src="img/small/arena40-800.webp" srcset="img/small/arena40-480.webp 480w, img/small/arena40-800.webp 800w" sizes="clamp(230px, 24vw, 400px)" data-full="img/montage/arena40.webp" alt="Arena: one of its looks" width="1280" height="720" loading="lazy" decoding="async"><figcaption>Arena</figcaption></figure>
+      <figure><img src="img/small/kaleidoscope50-800.webp" srcset="img/small/kaleidoscope50-480.webp 480w, img/small/kaleidoscope50-800.webp 800w" sizes="clamp(230px, 24vw, 400px)" data-full="img/montage/kaleidoscope50.webp" alt="Kaleidoscope: one of its looks" width="1280" height="720" loading="lazy" decoding="async"><figcaption>Kaleidoscope</figcaption></figure>
+      <figure><img src="img/small/acoustic60-800.webp" srcset="img/small/acoustic60-480.webp 480w, img/small/acoustic60-800.webp 800w" sizes="clamp(230px, 24vw, 400px)" data-full="img/montage/acoustic60.webp" alt="Acoustic stage: one of its looks" width="1280" height="720" loading="lazy" decoding="async"><figcaption>Acoustic stage</figcaption></figure>
+      <figure><img src="img/small/fountains60-800.webp" srcset="img/small/fountains60-480.webp 480w, img/small/fountains60-800.webp 800w" sizes="clamp(230px, 24vw, 400px)" data-full="img/montage/fountains60.webp" alt="Fountain show: one of its looks" width="1280" height="720" loading="lazy" decoding="async"><figcaption>Fountain show</figcaption></figure>
+      <figure><img src="img/small/wormhole-800.webp" srcset="img/small/wormhole-480.webp 480w, img/small/wormhole-800.webp 800w" sizes="clamp(230px, 24vw, 400px)" data-full="img/montage/wormhole.webp" alt="Wormhole: one of its looks" width="1280" height="720" loading="lazy" decoding="async"><figcaption>Wormhole</figcaption></figure>
+      <figure><img src="img/small/jazz30-800.webp" srcset="img/small/jazz30-480.webp 480w, img/small/jazz30-800.webp 800w" sizes="clamp(230px, 24vw, 400px)" data-full="img/montage/jazz30.webp" alt="Jazz club: one of its looks" width="1280" height="720" loading="lazy" decoding="async"><figcaption>Jazz club</figcaption></figure>
+      <figure aria-hidden="true"><img src="img/small/edm30-800.webp" srcset="img/small/edm30-480.webp 480w, img/small/edm30-800.webp 800w" sizes="clamp(230px, 24vw, 400px)" data-full="img/montage/edm30.webp" alt="" width="1280" height="720" loading="lazy" decoding="async"><figcaption>EDM stage</figcaption></figure>
+      <figure aria-hidden="true"><img src="img/small/terrain60-800.webp" srcset="img/small/terrain60-480.webp 480w, img/small/terrain60-800.webp 800w" sizes="clamp(230px, 24vw, 400px)" data-full="img/montage/terrain60.webp" alt="" width="1280" height="720" loading="lazy" decoding="async"><figcaption>Terrain</figcaption></figure>
+      <figure aria-hidden="true"><img src="img/small/metal55-800.webp" srcset="img/small/metal55-480.webp 480w, img/small/metal55-800.webp 800w" sizes="clamp(230px, 24vw, 400px)" data-full="img/montage/metal55.webp" alt="" width="1280" height="720" loading="lazy" decoding="async"><figcaption>Metal stage</figcaption></figure>
+      <figure aria-hidden="true"><img src="img/small/liquid50-800.webp" srcset="img/small/liquid50-480.webp 480w, img/small/liquid50-800.webp 800w" sizes="clamp(230px, 24vw, 400px)" data-full="img/montage/liquid50.webp" alt="" width="1280" height="720" loading="lazy" decoding="async"><figcaption>Liquid light</figcaption></figure>
+      <figure aria-hidden="true"><img src="img/small/dome50-800.webp" srcset="img/small/dome50-480.webp 480w, img/small/dome50-800.webp 800w" sizes="clamp(230px, 24vw, 400px)" data-full="img/montage/dome50.webp" alt="" width="1280" height="720" loading="lazy" decoding="async"><figcaption>The Dome</figcaption></figure>
+      <figure aria-hidden="true"><img src="img/small/aurora-800.webp" srcset="img/small/aurora-480.webp 480w, img/small/aurora-800.webp 800w" sizes="clamp(230px, 24vw, 400px)" data-full="img/montage/aurora.webp" alt="" width="1280" height="720" loading="lazy" decoding="async"><figcaption>Aurora</figcaption></figure>
+      <figure aria-hidden="true"><img src="img/small/club60-800.webp" srcset="img/small/club60-480.webp 480w, img/small/club60-800.webp 800w" sizes="clamp(230px, 24vw, 400px)" data-full="img/montage/club60.webp" alt="" width="1280" height="720" loading="lazy" decoding="async"><figcaption>The club</figcaption></figure>
+      <figure aria-hidden="true"><img src="img/small/ink70-800.webp" srcset="img/small/ink70-480.webp 480w, img/small/ink70-800.webp 800w" sizes="clamp(230px, 24vw, 400px)" data-full="img/montage/ink70.webp" alt="" width="1280" height="720" loading="lazy" decoding="async"><figcaption>Ink</figcaption></figure>
+      <figure aria-hidden="true"><img src="img/small/arena40-800.webp" srcset="img/small/arena40-480.webp 480w, img/small/arena40-800.webp 800w" sizes="clamp(230px, 24vw, 400px)" data-full="img/montage/arena40.webp" alt="" width="1280" height="720" loading="lazy" decoding="async"><figcaption>Arena</figcaption></figure>
+      <figure aria-hidden="true"><img src="img/small/kaleidoscope50-800.webp" srcset="img/small/kaleidoscope50-480.webp 480w, img/small/kaleidoscope50-800.webp 800w" sizes="clamp(230px, 24vw, 400px)" data-full="img/montage/kaleidoscope50.webp" alt="" width="1280" height="720" loading="lazy" decoding="async"><figcaption>Kaleidoscope</figcaption></figure>
+      <figure aria-hidden="true"><img src="img/small/acoustic60-800.webp" srcset="img/small/acoustic60-480.webp 480w, img/small/acoustic60-800.webp 800w" sizes="clamp(230px, 24vw, 400px)" data-full="img/montage/acoustic60.webp" alt="" width="1280" height="720" loading="lazy" decoding="async"><figcaption>Acoustic stage</figcaption></figure>
+      <figure aria-hidden="true"><img src="img/small/fountains60-800.webp" srcset="img/small/fountains60-480.webp 480w, img/small/fountains60-800.webp 800w" sizes="clamp(230px, 24vw, 400px)" data-full="img/montage/fountains60.webp" alt="" width="1280" height="720" loading="lazy" decoding="async"><figcaption>Fountain show</figcaption></figure>
+      <figure aria-hidden="true"><img src="img/small/wormhole-800.webp" srcset="img/small/wormhole-480.webp 480w, img/small/wormhole-800.webp 800w" sizes="clamp(230px, 24vw, 400px)" data-full="img/montage/wormhole.webp" alt="" width="1280" height="720" loading="lazy" decoding="async"><figcaption>Wormhole</figcaption></figure>
+      <figure aria-hidden="true"><img src="img/small/jazz30-800.webp" srcset="img/small/jazz30-480.webp 480w, img/small/jazz30-800.webp 800w" sizes="clamp(230px, 24vw, 400px)" data-full="img/montage/jazz30.webp" alt="" width="1280" height="720" loading="lazy" decoding="async"><figcaption>Jazz club</figcaption></figure>
     </div>
     <div class="reel back">
-      <figure><img src="img/montage/galaxy80.webp" alt="Galaxy: one of its looks" width="1280" height="720" decoding="async"><figcaption>Galaxy</figcaption></figure>
-      <figure><img src="img/montage/planetarium60.webp" alt="Laser planetarium: one of its looks" width="1280" height="720" decoding="async"><figcaption>Laser planetarium</figcaption></figure>
-      <figure><img src="img/montage/hall35.webp" alt="Concert hall: one of its looks" width="1280" height="720" decoding="async"><figcaption>Concert hall</figcaption></figure>
-      <figure><img src="img/montage/stadium60.webp" alt="Stadium: one of its looks" width="1280" height="720" decoding="async"><figcaption>Stadium</figcaption></figure>
-      <figure><img src="img/montage/drones.webp" alt="Drone show: one of its looks" width="1280" height="720" decoding="async"><figcaption>Drone show</figcaption></figure>
-      <figure><img src="img/montage/theater50.webp" alt="Small theater: one of its looks" width="1280" height="720" decoding="async"><figcaption>Small theater</figcaption></figure>
-      <figure><img src="img/montage/industrial50.webp" alt="Industrial stage: one of its looks" width="1280" height="720" decoding="async"><figcaption>Industrial stage</figcaption></figure>
-      <figure><img src="img/montage/garden70.webp" alt="Garden: one of its looks" width="1280" height="720" decoding="async"><figcaption>Garden</figcaption></figure>
-      <figure><img src="img/montage/sculptures50.webp" alt="Light sculptures: one of its looks" width="1280" height="720" decoding="async"><figcaption>Light sculptures</figcaption></figure>
-      <figure><img src="img/montage/painting80.webp" alt="Painting: one of its looks" width="1280" height="720" decoding="async"><figcaption>Painting</figcaption></figure>
-      <figure><img src="img/montage/amphitheater60.webp" alt="Amphitheater: one of its looks" width="1280" height="720" decoding="async"><figcaption>Amphitheater</figcaption></figure>
-      <figure><img src="img/montage/jazz80.webp" alt="Jazz club: one of its looks" width="1280" height="720" decoding="async"><figcaption>Jazz club</figcaption></figure>
-      <figure aria-hidden="true"><img src="img/montage/galaxy80.webp" alt="" width="1280" height="720" decoding="async"><figcaption>Galaxy</figcaption></figure>
-      <figure aria-hidden="true"><img src="img/montage/planetarium60.webp" alt="" width="1280" height="720" decoding="async"><figcaption>Laser planetarium</figcaption></figure>
-      <figure aria-hidden="true"><img src="img/montage/hall35.webp" alt="" width="1280" height="720" decoding="async"><figcaption>Concert hall</figcaption></figure>
-      <figure aria-hidden="true"><img src="img/montage/stadium60.webp" alt="" width="1280" height="720" decoding="async"><figcaption>Stadium</figcaption></figure>
-      <figure aria-hidden="true"><img src="img/montage/drones.webp" alt="" width="1280" height="720" decoding="async"><figcaption>Drone show</figcaption></figure>
-      <figure aria-hidden="true"><img src="img/montage/theater50.webp" alt="" width="1280" height="720" decoding="async"><figcaption>Small theater</figcaption></figure>
-      <figure aria-hidden="true"><img src="img/montage/industrial50.webp" alt="" width="1280" height="720" decoding="async"><figcaption>Industrial stage</figcaption></figure>
-      <figure aria-hidden="true"><img src="img/montage/garden70.webp" alt="" width="1280" height="720" decoding="async"><figcaption>Garden</figcaption></figure>
-      <figure aria-hidden="true"><img src="img/montage/sculptures50.webp" alt="" width="1280" height="720" decoding="async"><figcaption>Light sculptures</figcaption></figure>
-      <figure aria-hidden="true"><img src="img/montage/painting80.webp" alt="" width="1280" height="720" decoding="async"><figcaption>Painting</figcaption></figure>
-      <figure aria-hidden="true"><img src="img/montage/amphitheater60.webp" alt="" width="1280" height="720" decoding="async"><figcaption>Amphitheater</figcaption></figure>
-      <figure aria-hidden="true"><img src="img/montage/jazz80.webp" alt="" width="1280" height="720" decoding="async"><figcaption>Jazz club</figcaption></figure>
+      <figure><img src="img/small/galaxy80-800.webp" srcset="img/small/galaxy80-480.webp 480w, img/small/galaxy80-800.webp 800w" sizes="clamp(230px, 24vw, 400px)" data-full="img/montage/galaxy80.webp" alt="Galaxy: one of its looks" width="1280" height="720" loading="lazy" decoding="async"><figcaption>Galaxy</figcaption></figure>
+      <figure><img src="img/small/planetarium60-800.webp" srcset="img/small/planetarium60-480.webp 480w, img/small/planetarium60-800.webp 800w" sizes="clamp(230px, 24vw, 400px)" data-full="img/montage/planetarium60.webp" alt="Laser planetarium: one of its looks" width="1280" height="720" loading="lazy" decoding="async"><figcaption>Laser planetarium</figcaption></figure>
+      <figure><img src="img/small/hall35-800.webp" srcset="img/small/hall35-480.webp 480w, img/small/hall35-800.webp 800w" sizes="clamp(230px, 24vw, 400px)" data-full="img/montage/hall35.webp" alt="Concert hall: one of its looks" width="1280" height="720" loading="lazy" decoding="async"><figcaption>Concert hall</figcaption></figure>
+      <figure><img src="img/small/stadium60-800.webp" srcset="img/small/stadium60-480.webp 480w, img/small/stadium60-800.webp 800w" sizes="clamp(230px, 24vw, 400px)" data-full="img/montage/stadium60.webp" alt="Stadium: one of its looks" width="1280" height="720" loading="lazy" decoding="async"><figcaption>Stadium</figcaption></figure>
+      <figure><img src="img/small/drones-800.webp" srcset="img/small/drones-480.webp 480w, img/small/drones-800.webp 800w" sizes="clamp(230px, 24vw, 400px)" data-full="img/montage/drones.webp" alt="Drone show: one of its looks" width="1280" height="720" loading="lazy" decoding="async"><figcaption>Drone show</figcaption></figure>
+      <figure><img src="img/small/theater50-800.webp" srcset="img/small/theater50-480.webp 480w, img/small/theater50-800.webp 800w" sizes="clamp(230px, 24vw, 400px)" data-full="img/montage/theater50.webp" alt="Small theater: one of its looks" width="1280" height="720" loading="lazy" decoding="async"><figcaption>Small theater</figcaption></figure>
+      <figure><img src="img/small/industrial50-800.webp" srcset="img/small/industrial50-480.webp 480w, img/small/industrial50-800.webp 800w" sizes="clamp(230px, 24vw, 400px)" data-full="img/montage/industrial50.webp" alt="Industrial stage: one of its looks" width="1280" height="720" loading="lazy" decoding="async"><figcaption>Industrial stage</figcaption></figure>
+      <figure><img src="img/small/garden70-800.webp" srcset="img/small/garden70-480.webp 480w, img/small/garden70-800.webp 800w" sizes="clamp(230px, 24vw, 400px)" data-full="img/montage/garden70.webp" alt="Garden: one of its looks" width="1280" height="720" loading="lazy" decoding="async"><figcaption>Garden</figcaption></figure>
+      <figure><img src="img/small/sculptures50-800.webp" srcset="img/small/sculptures50-480.webp 480w, img/small/sculptures50-800.webp 800w" sizes="clamp(230px, 24vw, 400px)" data-full="img/montage/sculptures50.webp" alt="Light sculptures: one of its looks" width="1280" height="720" loading="lazy" decoding="async"><figcaption>Light sculptures</figcaption></figure>
+      <figure><img src="img/small/painting80-800.webp" srcset="img/small/painting80-480.webp 480w, img/small/painting80-800.webp 800w" sizes="clamp(230px, 24vw, 400px)" data-full="img/montage/painting80.webp" alt="Painting: one of its looks" width="1280" height="720" loading="lazy" decoding="async"><figcaption>Painting</figcaption></figure>
+      <figure><img src="img/small/amphitheater60-800.webp" srcset="img/small/amphitheater60-480.webp 480w, img/small/amphitheater60-800.webp 800w" sizes="clamp(230px, 24vw, 400px)" data-full="img/montage/amphitheater60.webp" alt="Amphitheater: one of its looks" width="1280" height="720" loading="lazy" decoding="async"><figcaption>Amphitheater</figcaption></figure>
+      <figure><img src="img/small/jazz80-800.webp" srcset="img/small/jazz80-480.webp 480w, img/small/jazz80-800.webp 800w" sizes="clamp(230px, 24vw, 400px)" data-full="img/montage/jazz80.webp" alt="Jazz club: one of its looks" width="1280" height="720" loading="lazy" decoding="async"><figcaption>Jazz club</figcaption></figure>
+      <figure aria-hidden="true"><img src="img/small/galaxy80-800.webp" srcset="img/small/galaxy80-480.webp 480w, img/small/galaxy80-800.webp 800w" sizes="clamp(230px, 24vw, 400px)" data-full="img/montage/galaxy80.webp" alt="" width="1280" height="720" loading="lazy" decoding="async"><figcaption>Galaxy</figcaption></figure>
+      <figure aria-hidden="true"><img src="img/small/planetarium60-800.webp" srcset="img/small/planetarium60-480.webp 480w, img/small/planetarium60-800.webp 800w" sizes="clamp(230px, 24vw, 400px)" data-full="img/montage/planetarium60.webp" alt="" width="1280" height="720" loading="lazy" decoding="async"><figcaption>Laser planetarium</figcaption></figure>
+      <figure aria-hidden="true"><img src="img/small/hall35-800.webp" srcset="img/small/hall35-480.webp 480w, img/small/hall35-800.webp 800w" sizes="clamp(230px, 24vw, 400px)" data-full="img/montage/hall35.webp" alt="" width="1280" height="720" loading="lazy" decoding="async"><figcaption>Concert hall</figcaption></figure>
+      <figure aria-hidden="true"><img src="img/small/stadium60-800.webp" srcset="img/small/stadium60-480.webp 480w, img/small/stadium60-800.webp 800w" sizes="clamp(230px, 24vw, 400px)" data-full="img/montage/stadium60.webp" alt="" width="1280" height="720" loading="lazy" decoding="async"><figcaption>Stadium</figcaption></figure>
+      <figure aria-hidden="true"><img src="img/small/drones-800.webp" srcset="img/small/drones-480.webp 480w, img/small/drones-800.webp 800w" sizes="clamp(230px, 24vw, 400px)" data-full="img/montage/drones.webp" alt="" width="1280" height="720" loading="lazy" decoding="async"><figcaption>Drone show</figcaption></figure>
+      <figure aria-hidden="true"><img src="img/small/theater50-800.webp" srcset="img/small/theater50-480.webp 480w, img/small/theater50-800.webp 800w" sizes="clamp(230px, 24vw, 400px)" data-full="img/montage/theater50.webp" alt="" width="1280" height="720" loading="lazy" decoding="async"><figcaption>Small theater</figcaption></figure>
+      <figure aria-hidden="true"><img src="img/small/industrial50-800.webp" srcset="img/small/industrial50-480.webp 480w, img/small/industrial50-800.webp 800w" sizes="clamp(230px, 24vw, 400px)" data-full="img/montage/industrial50.webp" alt="" width="1280" height="720" loading="lazy" decoding="async"><figcaption>Industrial stage</figcaption></figure>
+      <figure aria-hidden="true"><img src="img/small/garden70-800.webp" srcset="img/small/garden70-480.webp 480w, img/small/garden70-800.webp 800w" sizes="clamp(230px, 24vw, 400px)" data-full="img/montage/garden70.webp" alt="" width="1280" height="720" loading="lazy" decoding="async"><figcaption>Garden</figcaption></figure>
+      <figure aria-hidden="true"><img src="img/small/sculptures50-800.webp" srcset="img/small/sculptures50-480.webp 480w, img/small/sculptures50-800.webp 800w" sizes="clamp(230px, 24vw, 400px)" data-full="img/montage/sculptures50.webp" alt="" width="1280" height="720" loading="lazy" decoding="async"><figcaption>Light sculptures</figcaption></figure>
+      <figure aria-hidden="true"><img src="img/small/painting80-800.webp" srcset="img/small/painting80-480.webp 480w, img/small/painting80-800.webp 800w" sizes="clamp(230px, 24vw, 400px)" data-full="img/montage/painting80.webp" alt="" width="1280" height="720" loading="lazy" decoding="async"><figcaption>Painting</figcaption></figure>
+      <figure aria-hidden="true"><img src="img/small/amphitheater60-800.webp" srcset="img/small/amphitheater60-480.webp 480w, img/small/amphitheater60-800.webp 800w" sizes="clamp(230px, 24vw, 400px)" data-full="img/montage/amphitheater60.webp" alt="" width="1280" height="720" loading="lazy" decoding="async"><figcaption>Amphitheater</figcaption></figure>
+      <figure aria-hidden="true"><img src="img/small/jazz80-800.webp" srcset="img/small/jazz80-480.webp 480w, img/small/jazz80-800.webp 800w" sizes="clamp(230px, 24vw, 400px)" data-full="img/montage/jazz80.webp" alt="" width="1280" height="720" loading="lazy" decoding="async"><figcaption>Jazz club</figcaption></figure>
     </div>
   </div>
 </section>
@@ -123,11 +127,11 @@
     <p>Rows of moving lights that sweep and chase with the band, and a camera that cuts with the music like a concert film. Each venue has its own moment.</p>
   </div>
   <div class="strip venues">
-    <figure><video data-inline="venue-theater" muted loop playsinline preload="none" poster="img/poster-venue-theater.webp" aria-label="A small theater: red velvet curtains drawn back from a low rig, a mirror ball scattering flecks of light"></video><figcaption><b>Small theater</b>The curtain parts as the song starts, and a mirror ball turns in the quiet parts</figcaption></figure>
-    <figure><video data-inline="venue-arena" muted loop playsinline preload="none" poster="img/poster-venue-arena.webp" aria-label="An arena rig of moving lights, confetti drifting down over the floor"></video><figcaption><b>Arena</b>The full hung rig, and confetti at the big moment</figcaption></figure>
-    <figure><video data-inline="venue-amphitheater" muted loop playsinline preload="none" poster="img/poster-venue-amphitheater.webp" aria-label="An open-air stage seen from the lawn at night, glow sticks thrown up over the crowd"></video><figcaption><b>Amphitheater</b>Every song starts at sunset; glow sticks fly once it's dark</figcaption></figure>
-    <figure><video data-inline="venue-stadium" muted loop playsinline preload="none" poster="img/poster-venue-stadium.webp" aria-label="A stadium at night, fireworks bursting over the far stand behind a huge rig"></video><figcaption><b>Stadium</b>The floodlights go out as the song starts, and fireworks go up at the peaks</figcaption></figure>
-    <figure><video data-inline="venue-dome" muted loop playsinline preload="none" poster="img/poster-venue-dome.webp" aria-label="Inside a dome whose whole inner wall is a screen of bright colour, the stage small at its foot"></video><figcaption><b>The Dome</b>The whole show wraps round you on one giant screen</figcaption></figure>
+    <figure><video data-inline="venue-theater" muted loop playsinline preload="none" data-poster="img/poster-venue-theater.webp" aria-label="A small theater: red velvet curtains drawn back from a low rig, a mirror ball scattering flecks of light"></video><figcaption><b>Small theater</b>The curtain parts as the song starts, and a mirror ball turns in the quiet parts</figcaption></figure>
+    <figure><video data-inline="venue-arena" muted loop playsinline preload="none" data-poster="img/poster-venue-arena.webp" aria-label="An arena rig of moving lights, confetti drifting down over the floor"></video><figcaption><b>Arena</b>The full hung rig, and confetti at the big moment</figcaption></figure>
+    <figure><video data-inline="venue-amphitheater" muted loop playsinline preload="none" data-poster="img/poster-venue-amphitheater.webp" aria-label="An open-air stage seen from the lawn at night, glow sticks thrown up over the crowd"></video><figcaption><b>Amphitheater</b>Every song starts at sunset; glow sticks fly once it's dark</figcaption></figure>
+    <figure><video data-inline="venue-stadium" muted loop playsinline preload="none" data-poster="img/poster-venue-stadium.webp" aria-label="A stadium at night, fireworks bursting over the far stand behind a huge rig"></video><figcaption><b>Stadium</b>The floodlights go out as the song starts, and fireworks go up at the peaks</figcaption></figure>
+    <figure><video data-inline="venue-dome" muted loop playsinline preload="none" data-poster="img/poster-venue-dome.webp" aria-label="Inside a dome whose whole inner wall is a screen of bright colour, the stage small at its foot"></video><figcaption><b>The Dome</b>The whole show wraps round you on one giant screen</figcaption></figure>
   </div>
 </section>
 
@@ -138,13 +142,13 @@
     <p>A solo guitar gets the small room, a symphony the concert hall, a drop the club. Seven more stages, each lit the way that music is lit live.</p>
   </div>
   <div class="strip cards">
-    <figure><img src="img/poster-industrial.webp" alt="An industrial stage of steel trusses and screens, hard beams cutting through haze" width="1600" height="900" loading="lazy" decoding="async"><figcaption><b>The industrial stage</b>Bare steel, haze and screens, with hard white light cutting through in clean, mechanical shapes. For heavy, driving music.</figcaption></figure>
-    <figure><img src="img/poster-jazz.webp" alt="A grand piano, an upright bass and a drum kit on a small stage against red velvet curtains" width="1600" height="900" loading="lazy" decoding="async"><figcaption><b>The jazz club</b>A grand piano, a bass and drums against red velvet. A warm light finds one player at a time. It never flashes.</figcaption></figure>
-    <figure><img src="img/poster-edm.webp" alt="A festival stage: a sunburst of LED panels, a video wall and laser fans over the crowd" width="1600" height="900" loading="lazy" decoding="async"><figcaption><b>The EDM stage</b>LED panels in a new shape every song, a video wall and laser fans. One bold colour, then two when the drop lands.</figcaption></figure>
-    <figure><img src="img/poster-metal.webp" alt="A metal stage between walls of amps, flame jets firing along the front" width="1600" height="900" loading="lazy" decoding="async"><figcaption><b>The metal stage</b>Walls of amps and flame jets on the big hits, with a waterfall of sparks for the song's biggest moment.</figcaption></figure>
-    <figure><img src="img/poster-acoustic.webp" alt="A small stage with a stool, a microphone and a guitar under string lights against a brick wall" width="1600" height="900" loading="lazy" decoding="async"><figcaption><b>The acoustic stage</b>A stool, a mic and string lights in a small brick room. The spotlight swells with the voice.</figcaption></figure>
-    <figure><img src="img/poster-club.webp" alt="A club with an LED wall, lasers and an LED dance floor" width="1600" height="900" loading="lazy" decoding="async"><figcaption><b>The club</b>A video wall, lasers and a dance floor that lights up with the track. It goes dark before the drop, then everything hits at once.</figcaption></figure>
-    <figure><img src="img/poster-hall.webp" alt="A concert hall stage set for a full orchestra under a pipe organ" width="1600" height="900" loading="lazy" decoding="async"><figcaption><b>The concert hall</b>A pipe organ over an orchestra's chairs. The light rises and falls with the music's swells, not a beat.</figcaption></figure>
+    <figure><img src="img/small/poster-industrial-800.webp" srcset="img/small/poster-industrial-480.webp 480w, img/small/poster-industrial-800.webp 800w" sizes="(max-width: 520px) 100vw, (max-width: 1000px) 50vw, 25vw" data-full="img/poster-industrial.webp" alt="An industrial stage of steel trusses and screens, hard beams cutting through haze" width="1600" height="900" loading="lazy" decoding="async"><figcaption><b>The industrial stage</b>Bare steel, haze and screens, with hard white light cutting through in clean, mechanical shapes. For heavy, driving music.</figcaption></figure>
+    <figure><img src="img/small/poster-jazz-800.webp" srcset="img/small/poster-jazz-480.webp 480w, img/small/poster-jazz-800.webp 800w" sizes="(max-width: 520px) 100vw, (max-width: 1000px) 50vw, 25vw" data-full="img/poster-jazz.webp" alt="A grand piano, an upright bass and a drum kit on a small stage against red velvet curtains" width="1600" height="900" loading="lazy" decoding="async"><figcaption><b>The jazz club</b>A grand piano, a bass and drums against red velvet. A warm light finds one player at a time. It never flashes.</figcaption></figure>
+    <figure><img src="img/small/poster-edm-800.webp" srcset="img/small/poster-edm-480.webp 480w, img/small/poster-edm-800.webp 800w" sizes="(max-width: 520px) 100vw, (max-width: 1000px) 50vw, 25vw" data-full="img/poster-edm.webp" alt="A festival stage: a sunburst of LED panels, a video wall and laser fans over the crowd" width="1600" height="900" loading="lazy" decoding="async"><figcaption><b>The EDM stage</b>LED panels in a new shape every song, a video wall and laser fans. One bold colour, then two when the drop lands.</figcaption></figure>
+    <figure><img src="img/small/poster-metal-800.webp" srcset="img/small/poster-metal-480.webp 480w, img/small/poster-metal-800.webp 800w" sizes="(max-width: 520px) 100vw, (max-width: 1000px) 50vw, 25vw" data-full="img/poster-metal.webp" alt="A metal stage between walls of amps, flame jets firing along the front" width="1600" height="900" loading="lazy" decoding="async"><figcaption><b>The metal stage</b>Walls of amps and flame jets on the big hits, with a waterfall of sparks for the song's biggest moment.</figcaption></figure>
+    <figure><img src="img/small/poster-acoustic-800.webp" srcset="img/small/poster-acoustic-480.webp 480w, img/small/poster-acoustic-800.webp 800w" sizes="(max-width: 520px) 100vw, (max-width: 1000px) 50vw, 25vw" data-full="img/poster-acoustic.webp" alt="A small stage with a stool, a microphone and a guitar under string lights against a brick wall" width="1600" height="900" loading="lazy" decoding="async"><figcaption><b>The acoustic stage</b>A stool, a mic and string lights in a small brick room. The spotlight swells with the voice.</figcaption></figure>
+    <figure><img src="img/small/poster-club-800.webp" srcset="img/small/poster-club-480.webp 480w, img/small/poster-club-800.webp 800w" sizes="(max-width: 520px) 100vw, (max-width: 1000px) 50vw, 25vw" data-full="img/poster-club.webp" alt="A club with an LED wall, lasers and an LED dance floor" width="1600" height="900" loading="lazy" decoding="async"><figcaption><b>The club</b>A video wall, lasers and a dance floor that lights up with the track. It goes dark before the drop, then everything hits at once.</figcaption></figure>
+    <figure><img src="img/small/poster-hall-800.webp" srcset="img/small/poster-hall-480.webp 480w, img/small/poster-hall-800.webp 800w" sizes="(max-width: 520px) 100vw, (max-width: 1000px) 50vw, 25vw" data-full="img/poster-hall.webp" alt="A concert hall stage set for a full orchestra under a pipe organ" width="1600" height="900" loading="lazy" decoding="async"><figcaption><b>The concert hall</b>A pipe organ over an orchestra's chairs. The light rises and falls with the music's swells, not a beat.</figcaption></figure>
   </div>
 </section>
 
@@ -155,19 +159,19 @@
     <p>Thirteen visuals drawn by the song as it plays: every note becomes a star, a flower, a drop of ink, a brush stroke, a laser, a jet of water or a drone in the sky.</p>
   </div>
   <div class="strip cards visuals">
-    <figure><img src="img/poster-strip-liquid.webp" alt="Coloured oils floating in water" width="1280" height="720" loading="lazy" decoding="async"><figcaption><b>Liquid light</b>Coloured oils in water, like a 1960s light show</figcaption></figure>
-    <figure><img src="img/poster-strip-ink.webp" alt="Ink curling through dark water" width="1280" height="720" loading="lazy" decoding="async"><figcaption><b>Ink</b>Drops of ink curling through dark water</figcaption></figure>
-    <figure><img src="img/poster-strip-galaxy.webp" alt="A spiral galaxy, the view pulling back until it is one of thousands" width="1280" height="720" loading="lazy" decoding="async"><figcaption><b>Galaxy</b>Pulls back over the song until it's one of thousands</figcaption></figure>
-    <figure><img src="img/poster-strip-terrain.webp" alt="Neon hills rolling toward a striped sun" width="1280" height="720" loading="lazy" decoding="async"><figcaption><b>Terrain</b>Neon hills rolling toward a striped sun</figcaption></figure>
-    <figure><img src="img/poster-strip-garden.webp" alt="Glowing flowers under a night sky" width="1280" height="720" loading="lazy" decoding="async"><figcaption><b>Garden</b>A flower for every note, glowing under the night sky</figcaption></figure>
-    <figure><img src="img/poster-strip-painting.webp" alt="A canvas of brush strokes with a sung line brushed in" width="1280" height="720" loading="lazy" decoding="async"><figcaption><b>Painting</b>Brush strokes, with the words brushed in as they're sung</figcaption></figure>
-    <figure><img src="img/poster-strip-kaleidoscope.webp" alt="Shards of coloured glass turning in a kaleidoscope" width="1280" height="720" loading="lazy" decoding="async"><figcaption><b>Kaleidoscope</b>Shards of coloured glass turning with the beat</figcaption></figure>
-    <figure><img src="img/poster-strip-planetarium.webp" alt="Laser figures drawn across a dome of stars" width="1280" height="720" loading="lazy" decoding="async"><figcaption><b>Laser planetarium</b>Laser figures drawn across a dome of stars</figcaption></figure>
-    <figure><img src="img/poster-strip-sculptures.webp" alt="Hundreds of lights hanging on wires, rising and falling in waves" width="1280" height="720" loading="lazy" decoding="async"><figcaption><b>Light sculptures</b>Hundreds of lights on wires, rising and falling in waves</figcaption></figure>
-    <figure><img src="img/poster-strip-fountains.webp" alt="Water jets dancing on a lake at night" width="1280" height="720" loading="lazy" decoding="async"><figcaption><b>Fountain show</b>Water jets on a lake, with a different finale every song</figcaption></figure>
-    <figure><img src="img/poster-strip-aurora.webp" alt="Clouds of every colour over mountains and a still lake" width="1280" height="720" loading="lazy" decoding="async"><figcaption><b>Aurora</b>Slow colour over mountains and a still lake, for calm music</figcaption></figure>
-    <figure><img src="img/poster-strip-wormhole.webp" alt="A flight through a tunnel of light in space" width="1280" height="720" loading="lazy" decoding="async"><figcaption><b>Wormhole</b>A flight through light that goes faster as the music builds</figcaption></figure>
-    <figure><img src="img/poster-strip-drones.webp" alt="Hundreds of lit drones forming a picture in the night sky" width="1280" height="720" loading="lazy" decoding="async"><figcaption><b>Drone show</b>Hundreds of drones in the sky, now and then spelling a word from the song</figcaption></figure>
+    <figure><img src="img/small/poster-strip-liquid-800.webp" srcset="img/small/poster-strip-liquid-480.webp 480w, img/small/poster-strip-liquid-800.webp 800w" sizes="(max-width: 520px) 100vw, (max-width: 1000px) 50vw, 25vw" data-full="img/poster-strip-liquid.webp" alt="Coloured oils floating in water" width="1280" height="720" loading="lazy" decoding="async"><figcaption><b>Liquid light</b>Coloured oils in water, like a 1960s light show</figcaption></figure>
+    <figure><img src="img/small/poster-strip-ink-800.webp" srcset="img/small/poster-strip-ink-480.webp 480w, img/small/poster-strip-ink-800.webp 800w" sizes="(max-width: 520px) 100vw, (max-width: 1000px) 50vw, 25vw" data-full="img/poster-strip-ink.webp" alt="Ink curling through dark water" width="1280" height="720" loading="lazy" decoding="async"><figcaption><b>Ink</b>Drops of ink curling through dark water</figcaption></figure>
+    <figure><img src="img/small/poster-strip-galaxy-800.webp" srcset="img/small/poster-strip-galaxy-480.webp 480w, img/small/poster-strip-galaxy-800.webp 800w" sizes="(max-width: 520px) 100vw, (max-width: 1000px) 50vw, 25vw" data-full="img/poster-strip-galaxy.webp" alt="A spiral galaxy, the view pulling back until it is one of thousands" width="1280" height="720" loading="lazy" decoding="async"><figcaption><b>Galaxy</b>Pulls back over the song until it's one of thousands</figcaption></figure>
+    <figure><img src="img/small/poster-strip-terrain-800.webp" srcset="img/small/poster-strip-terrain-480.webp 480w, img/small/poster-strip-terrain-800.webp 800w" sizes="(max-width: 520px) 100vw, (max-width: 1000px) 50vw, 25vw" data-full="img/poster-strip-terrain.webp" alt="Neon hills rolling toward a striped sun" width="1280" height="720" loading="lazy" decoding="async"><figcaption><b>Terrain</b>Neon hills rolling toward a striped sun</figcaption></figure>
+    <figure><img src="img/small/poster-strip-garden-800.webp" srcset="img/small/poster-strip-garden-480.webp 480w, img/small/poster-strip-garden-800.webp 800w" sizes="(max-width: 520px) 100vw, (max-width: 1000px) 50vw, 25vw" data-full="img/poster-strip-garden.webp" alt="Glowing flowers under a night sky" width="1280" height="720" loading="lazy" decoding="async"><figcaption><b>Garden</b>A flower for every note, glowing under the night sky</figcaption></figure>
+    <figure><img src="img/small/poster-strip-painting-800.webp" srcset="img/small/poster-strip-painting-480.webp 480w, img/small/poster-strip-painting-800.webp 800w" sizes="(max-width: 520px) 100vw, (max-width: 1000px) 50vw, 25vw" data-full="img/poster-strip-painting.webp" alt="A canvas of brush strokes with a sung line brushed in" width="1280" height="720" loading="lazy" decoding="async"><figcaption><b>Painting</b>Brush strokes, with the words brushed in as they're sung</figcaption></figure>
+    <figure><img src="img/small/poster-strip-kaleidoscope-800.webp" srcset="img/small/poster-strip-kaleidoscope-480.webp 480w, img/small/poster-strip-kaleidoscope-800.webp 800w" sizes="(max-width: 520px) 100vw, (max-width: 1000px) 50vw, 25vw" data-full="img/poster-strip-kaleidoscope.webp" alt="Shards of coloured glass turning in a kaleidoscope" width="1280" height="720" loading="lazy" decoding="async"><figcaption><b>Kaleidoscope</b>Shards of coloured glass turning with the beat</figcaption></figure>
+    <figure><img src="img/small/poster-strip-planetarium-800.webp" srcset="img/small/poster-strip-planetarium-480.webp 480w, img/small/poster-strip-planetarium-800.webp 800w" sizes="(max-width: 520px) 100vw, (max-width: 1000px) 50vw, 25vw" data-full="img/poster-strip-planetarium.webp" alt="Laser figures drawn across a dome of stars" width="1280" height="720" loading="lazy" decoding="async"><figcaption><b>Laser planetarium</b>Laser figures drawn across a dome of stars</figcaption></figure>
+    <figure><img src="img/small/poster-strip-sculptures-800.webp" srcset="img/small/poster-strip-sculptures-480.webp 480w, img/small/poster-strip-sculptures-800.webp 800w" sizes="(max-width: 520px) 100vw, (max-width: 1000px) 50vw, 25vw" data-full="img/poster-strip-sculptures.webp" alt="Hundreds of lights hanging on wires, rising and falling in waves" width="1280" height="720" loading="lazy" decoding="async"><figcaption><b>Light sculptures</b>Hundreds of lights on wires, rising and falling in waves</figcaption></figure>
+    <figure><img src="img/small/poster-strip-fountains-800.webp" srcset="img/small/poster-strip-fountains-480.webp 480w, img/small/poster-strip-fountains-800.webp 800w" sizes="(max-width: 520px) 100vw, (max-width: 1000px) 50vw, 25vw" data-full="img/poster-strip-fountains.webp" alt="Water jets dancing on a lake at night" width="1280" height="720" loading="lazy" decoding="async"><figcaption><b>Fountain show</b>Water jets on a lake, with a different finale every song</figcaption></figure>
+    <figure><img src="img/small/poster-strip-aurora-800.webp" srcset="img/small/poster-strip-aurora-480.webp 480w, img/small/poster-strip-aurora-800.webp 800w" sizes="(max-width: 520px) 100vw, (max-width: 1000px) 50vw, 25vw" data-full="img/poster-strip-aurora.webp" alt="Painted clouds of every colour, lit by a low sun" width="1280" height="720" loading="lazy" decoding="async"><figcaption><b>Aurora</b>Drifting through a sky of impossible colours, for calm music</figcaption></figure>
+    <figure><img src="img/small/poster-strip-wormhole-800.webp" srcset="img/small/poster-strip-wormhole-480.webp 480w, img/small/poster-strip-wormhole-800.webp 800w" sizes="(max-width: 520px) 100vw, (max-width: 1000px) 50vw, 25vw" data-full="img/poster-strip-wormhole.webp" alt="A flight through a tunnel of light in space" width="1280" height="720" loading="lazy" decoding="async"><figcaption><b>Wormhole</b>A flight through light that goes faster as the music builds</figcaption></figure>
+    <figure><img src="img/small/poster-strip-drones-800.webp" srcset="img/small/poster-strip-drones-480.webp 480w, img/small/poster-strip-drones-800.webp 800w" sizes="(max-width: 520px) 100vw, (max-width: 1000px) 50vw, 25vw" data-full="img/poster-strip-drones.webp" alt="Hundreds of lit drones forming a picture in the night sky" width="1280" height="720" loading="lazy" decoding="async"><figcaption><b>Drone show</b>Hundreds of drones in the sky, now and then spelling a word from the song</figcaption></figure>
   </div>
 </section>
 
@@ -175,7 +179,7 @@
   <div class="label">Apple TV</div>
   <h2>Best on the big screen.</h2>
   <p class="tv-lede">Tap once to send the show from your iPhone, iPad or Mac to your Apple TV. The TV can play the music too, perfectly in time with the lights. Turn off the lamps and it's a concert in your living room.</p>
-  <video data-src="video/tv" class="tv-video" autoplay muted loop playsinline preload="metadata" poster="img/tv-poster.webp" aria-label="Hazeshow on a TV"></video>
+  <video data-inline="tv" class="tv-video" muted loop playsinline preload="none" data-poster="img/tv-poster.webp" aria-label="Hazeshow on a TV"></video>
   <div class="cols">
     <div><h3>From your phone</h3><p>Your iPhone or iPad listens to the music playing in the room and runs the show on the TV. No Mac needed.</p></div>
     <div><h3>Smooth and sharp</h3><p>The Apple TV draws the show itself, live and silky smooth.</p></div>
@@ -199,7 +203,7 @@
 <section class="replay">
   <div class="label">Replay</div>
   <h2>Save the moment.</h2>
-  <p class="tv-lede replay-lede">The chorus just hit and the lights went huge? Replay saves the last 30 seconds of the show, with its sound, as a video ready to send. Or start recording and catch the next 30.</p>
+  <p class="tv-lede replay-lede">The chorus just hit and the lights went huge? Replay saves the last 30 seconds of the show, with its sound, as a video, already copied so you can paste it straight into a message. Or start recording and catch the next 30.</p>
 </section>
 
 <section class="closing">
@@ -208,14 +212,17 @@
   <p class="meta" data-store-soon>Coming to the App Store for iPhone, iPad, Mac and Apple TV.</p>
 </section>
 
+</main>
+
 <footer>
   <span>© 2026 Chai Wellness</span>
+  <span>Galaxy star map: NASA/Goddard Space Flight Center Scientific Visualization Studio; Gaia DR2: ESA/Gaia/DPAC</span>
   <a href="privacy.html">Privacy</a>
   <a href="support.html">Support</a>
   <a class="discord" data-discord href="https://discord.gg/WpsQTTFNzN" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M20.3 4.4A19.8 19.8 0 0 0 15.4 3l-.6 1.3a18.4 18.4 0 0 0-5.6 0L8.6 3a19.7 19.7 0 0 0-4.9 1.5C.6 9.1-.3 13.6.1 18.1a19.9 19.9 0 0 0 6 3l1.3-2.1a12.9 12.9 0 0 1-2-1l.5-.4a14.2 14.2 0 0 0 12.2 0l.5.4a12.9 12.9 0 0 1-2.1 1l1.3 2.1a19.8 19.8 0 0 0 6-3c.5-5.2-.8-9.7-3.5-13.7ZM8.3 15.3c-1.2 0-2.2-1.1-2.2-2.4s1-2.4 2.2-2.4 2.2 1.1 2.2 2.4-1 2.4-2.2 2.4Zm7.4 0c-1.2 0-2.2-1.1-2.2-2.4s1-2.4 2.2-2.4 2.2 1.1 2.2 2.4-1 2.4-2.2 2.4Z"/></svg>Discord</a>
 </footer>
 
 <script src="store.js" defer></script>
-<script src="site.js?v=20261102" defer></script>
+<script src="site.js?v=2026110203" defer></script>
 </body>
 </html>

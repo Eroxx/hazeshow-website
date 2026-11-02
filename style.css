@@ -30,7 +30,7 @@ section > * { max-width: var(--wide); margin-left: auto; margin-right: auto; }
 
 /* Header */
 .top { position: fixed; inset: 0 0 auto 0; z-index: 20; display: flex; align-items: center; justify-content: space-between;
-  padding: 16px max(20px, 4vw); background: rgba(0, 0, 0, 0.55); backdrop-filter: saturate(160%) blur(18px); -webkit-backdrop-filter: saturate(160%) blur(18px);
+  padding: 16px max(20px, 4vw); background: rgba(0, 0, 0, 0.82);
   border-bottom: 1px solid rgba(255, 255, 255, 0.06); }
 .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font: 500 16px var(--display); font-stretch: 125%; letter-spacing: -0.01em; }
 .brand img { border-radius: 7px; }
@@ -144,7 +144,7 @@ footer a:hover { color: var(--ink); }
           mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent); }
 .reel { display: flex; gap: 18px; width: max-content; animation: reel 140s linear infinite; }
 .reel.back { animation-direction: reverse; animation-duration: 160s; }
-.reel:hover { animation-play-state: paused; }
+.reel:hover, .reels.resting .reel { animation-play-state: paused; }
 .reel figure { margin: 0; flex: none; width: clamp(230px, 24vw, 400px); }
 .reel img { cursor: zoom-in; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 5px; background: #0b0b0d; display: block; }
 .reel figcaption { font: 400 11px var(--mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--mute); margin-top: 10px; }
@@ -161,7 +161,7 @@ footer a:hover { color: var(--ink); }
 /* Sound: each film plays to First Light; one aloud at a time. White when on. */
 .sound { position: absolute; left: 10px; bottom: 10px; z-index: 2; height: 36px; padding: 0 13px 0 11px; display: inline-flex; align-items: center; gap: 7px;
   border: 0; border-radius: 18px; background: rgba(0, 0, 0, 0.62); color: #fff; font: 600 13px/1 var(--body); cursor: pointer;
-  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); transition: background 0.2s, color 0.2s; }
+  transition: background 0.2s, color 0.2s; }
 .sound:hover, .sound:focus-visible { background: rgba(0, 0, 0, 0.82); }
 .sound[aria-pressed="true"] { background: #fff; color: #000; }
 /* The home page film's: a big white button with the words, the first thing to press (his note,
@@ -180,7 +180,7 @@ footer a:hover { color: var(--ink); }
 .hero-shade { pointer-events: none; }
 .expand { position: absolute; right: 10px; bottom: 10px; width: 36px; height: 36px; display: grid; place-items: center;
   border: 1px solid rgba(255, 255, 255, 0.25); border-radius: 50%; background: rgba(0, 0, 0, 0.55); color: #fff;
-  cursor: pointer; opacity: 0.85; transition: opacity 0.2s, background 0.2s; -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
+  cursor: pointer; opacity: 0.85; transition: opacity 0.2s, background 0.2s; }
 .expand:hover, .expand:focus-visible { opacity: 1; background: rgba(0, 0, 0, 0.8); }
 .expand-hero { top: 84px; bottom: auto; right: max(20px, 5vw); z-index: 2; }
 .viewing, .viewing body { overflow: hidden; }
@@ -226,3 +226,6 @@ a.discord svg { width: 16px; height: 16px; flex: none; }
 .stages .strip.cards, .modes .strip.cards { margin-top: 48px; }
 .montage > .wall { margin: 0 auto 56px; padding: 0 max(20px, 5vw); max-width: calc(var(--wide) + 2 * max(20px, 5vw)); box-sizing: border-box; }
 .wall video { width: 100%; aspect-ratio: 16 / 9; display: block; border-radius: 6px; background: #0b0b0d; cursor: zoom-in; }
+
+/* Sections below the first screen aren't laid out or painted until they come near. */
+.stages, .modes, .tv, .listens, .replay, .closing { content-visibility: auto; contain-intrinsic-size: auto 800px; }
